@@ -111,14 +111,12 @@ def main() -> None:
     print("Test vectors shape:", test_vectors.shape)
     print("Test labels shape:", test_labels.shape)
 
-    # 🔥 PyTorch
     X_train = torch.tensor(train_vectors, dtype=torch.float32)
     y_train = torch.tensor(train_labels, dtype=torch.float32)
 
     X_test = torch.tensor(test_vectors, dtype=torch.float32)
     y_test = torch.tensor(test_labels, dtype=torch.float32)
 
-    # 🔥 Model
     model = nn.Sequential(
         nn.Linear(100, 64),
         nn.ReLU(),
@@ -129,7 +127,7 @@ def main() -> None:
     loss_fn = nn.BCELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-    # 🔥 Training
+    
     epochs = 5
 
     for epoch in range(epochs):
@@ -144,7 +142,6 @@ def main() -> None:
 
         print(f"Epoch {epoch + 1}, Loss: {loss.item()}")
 
-    # 🔥 Evaluation
     model.eval()
 
     with torch.no_grad():
